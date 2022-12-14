@@ -14,9 +14,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended :  true}))
 
-app.get('/', index)
+app.get('/', index);
 app.use('/employee', employee);
-app.use(notFound)
+app.use(notFound);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running...')
