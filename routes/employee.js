@@ -76,7 +76,7 @@ employee.get('/:id([0-9]{1,3})', async(req, res, next) => {
 
 employee.get('/:name([A-Za-z]+)', async(req, res, next) => {
     const name = req.params.name;
-    const emp = await db.query("SELECT * FROM employees WHERE name="+name.toLowerCase()+"");
+    const emp = await db.query("SELECT * FROM employees WHERE name='"+ name.toLowerCase()+"'");
     if(emp.length > 0){
         return res.status(201).json({code:201, message:emp});
     }
