@@ -1,14 +1,9 @@
-const mysql = require('mysql');
-const util = require('util');
-import { DB_DATABASE,
-    DB_HOST,
-    DB_PORT,
-    DB_USER,
-    DB_PASSWORD,
-} from "../src/config.js";
+import mysql from'mysql';
+import util from'util';
+import {DB_DATABASE, DB_HOST, DB_PORT, DB_USER, DB_PASSWORD } from "../src/config.js";
 
 
-const pool = mysql.createPool({
+export const pool = mysql.createPool({
     connectionLimit:10,
     host: DB_HOST,
     port: DB_PORT,
@@ -18,4 +13,3 @@ const pool = mysql.createPool({
 });
 
 pool.query = util.promisify(pool.query);
-module.exports = pool;

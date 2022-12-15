@@ -1,17 +1,18 @@
 //Dependences
-const morgan = require('morgan');
-const express = require('express');
+import morgan from'morgan';
+import express from'express';
 const app = express();
 //Routes 
-const employee = require('./routes/employee');
-const user = require('./routes/user');
-//Middleware
-const auth = require("./middleware/auth");
-const index = require('./middleware/index');
-const notFound = require('./middleware/notFound');
-const cors = require('./middleware/cors');
+import  employee from './routes/employee.js';
+import  user from './routes/user.js';
 
-import {PORT} from './config.js';
+//Middleware
+import  {auth} from "./middleware/auth.js" ;
+import  {index} from './middleware/index.js' ;
+import  {notFound} from './middleware/notFound.js' ;
+import  {cors} from './middleware/cors.js' ;
+
+import {PORT} from './src/config.js' ;
 
 app.use(cors);
 app.use(morgan('dev'));
@@ -24,6 +25,5 @@ app.use('/user', user);
 app.use(auth);
 app.use(notFound);
 
-app.listen(PORT, () => {
-    console.log('Server is running...')
-});
+app.listen(PORT);
+console.log('listening on port')
