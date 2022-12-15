@@ -13,6 +13,7 @@ CREATE TABLE employees (
     PRIMARY KEY(id)
 );
 
+
 CREATE TABLE user(
 	id int auto_increment not null,
     user_name varchar(255),
