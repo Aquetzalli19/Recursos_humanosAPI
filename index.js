@@ -17,9 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended :  true}))
 
 app.get('/', index);
+app.use('/employee', employee);
 app.use('/user', user);
 app.use(auth);
-app.use('/employee', employee);
 app.use(notFound);
 
 app.listen(process.env.PORT || 3000, () => {

@@ -49,12 +49,12 @@ employee.put('/:id([0-9]{1,3})', async(req, res, next) => {
 
 employee.patch('/:id([0-9]{1,3})', async(req, res, next) => {
     if(req.body.name){
-        let query = `ÙPDATE employees SET name='${req.body.name}' WHERE id=${req.params.id};`
+        let query = `UPDATE employees SET name='${req.body.name}' WHERE id=${req.params.id};`
 
         const rows = await db.query(query);
 
         if(rows.affectedRows == 1) {
-            return res.status(200).json({code:200, message:'Empleado modificado correctamente'})
+            return res.status(200).json({code:200, message:'Nombre del empleado modificado correctamente'})
         }
         return res.status(500).json({code:500,  message:'Ocurrio un error'})
     }
@@ -68,9 +68,9 @@ employee.get('/', async(req, res, next) => {
 
 employee.get('/:id([0-9]{1,3})', async(req, res, next) => {
     const id = req.params.id;
-    const employeeId = await db.query('SELECT * FROM employees WHERE id='+id);
+    const emp = await db.query('SELECT * FROM employees WHERE id='+id);
     if(id >=1 && id <= 722){
-        return res.status(201).json({code:201, message: employeeId})
+        return res.status(201).json({code:201, message: emp})
     }
     return res.status(404).send({code:404, message:'Empleado no encontrado'})
 });
